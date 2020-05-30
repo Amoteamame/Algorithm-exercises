@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public class 和为S的连续正数序列 {
     public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
         ArrayList<ArrayList<Integer> > result = new ArrayList<>();
-        int plow=1,phigh=2;
-        while (plow < phigh) {
-            int cur = (phigh + plow) * (phigh - plow + 1) / 2;
+        int low = 1, high = 2; // 因为是连续正数
+        while (low < high) {
+            int cur = (high+low)*(high-low+1) / 2;
             if (cur == sum) {
                 ArrayList<Integer> list = new ArrayList<>();
-                for (int i = plow; i <= phigh; i++) {
+                for (int i = low; i <= high; i++) {
                     list.add(i);
                 }
                 result.add(list);
-                plow++;
-            } else if (cur < sum) {
-                phigh++;
+                low++; //向后走
+            } else if (sum > cur) {
+                high++;
             } else {
-                plow++;
+                low++;
             }
         }
         return result;

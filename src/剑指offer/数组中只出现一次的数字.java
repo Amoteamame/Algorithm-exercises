@@ -5,18 +5,16 @@ package 剑指offer;
  */
 public class 数组中只出现一次的数字 {
     public void FindNumsAppearOnce(int[] array, int[] num1, int[] num2)    {
-        int length = array.length;
-        if (length == 2) {
+        int len = array.length;
+        if (len == 0) {
             num1[0] = array[0];
-            num2[0] = array[1];
-            return;
+            num2[0] = array[0];
         }
-        int bitResult = 0 ;
-        for (int i = 0; i < length; i++) {
-            bitResult ^= array[i];
-        }
+        int bitResult = 0;
+        for (int i = 0; i < len; i++) bitResult ^= array[i];
         int index = findFirst1(bitResult);
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < len; i++) {
+            //根据bitResult，分成两组
             if (isBit1(array[i], index)) {
                 num1[0] ^= array[i];
             } else {
@@ -25,10 +23,11 @@ public class 数组中只出现一次的数字 {
         }
     }
 
+    // 拿到两个不同数字异或第一个1的位置
     private int findFirst1(int bitResult) {
-        int index =0;
+        int index =0 ;
         while (((bitResult & 1) == 0) && index < 32) {
-            bitResult >>= 1;
+            bitResult >>=1;
             index++;
         }
         return index;
