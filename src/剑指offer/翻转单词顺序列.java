@@ -26,8 +26,8 @@ public class 翻转单词顺序列 {
 
     public static String ReverseSentence2(String str) {
         char[] chars = str.toCharArray();
-        reverse(chars, 0, chars.length - 1); //先反转整个数组
-        int blank = -1; //记录空格位置,依据空格来确定单词的起始和终止位置
+        reverse(chars,0,chars.length-1);
+        int blank = -1;
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == ' ') {
                 int nextBlank = i;
@@ -35,7 +35,8 @@ public class 翻转单词顺序列 {
                 blank = i;
             }
         }
-        reverse(chars, blank+1, chars.length-1);//最后一个单词单独进行反转,因为上述遍历，只遍历到了最后一个单词的前面空格
+        reverse(chars, blank+1,chars.length-1);
+
         return new String(chars);
     }
 

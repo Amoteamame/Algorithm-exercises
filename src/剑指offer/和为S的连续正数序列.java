@@ -7,23 +7,26 @@ import java.util.ArrayList;
  */
 public class 和为S的连续正数序列 {
     public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
-        ArrayList<ArrayList<Integer> > result = new ArrayList<>();
-        int low = 1, high = 2; // 因为是连续正数
-        while (low < high) {
-            int cur = (high+low)*(high-low+1) / 2;
-            if (cur == sum) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        int low = 1, high = 2;
+        while (high > low) {
+
+            int curSum = (low + high) * (high - low + 1) / 2;
+            if (curSum == sum) {
                 ArrayList<Integer> list = new ArrayList<>();
-                for (int i = low; i <= high; i++) {
+                for (int i = low; i <=high ; i++) {
                     list.add(i);
                 }
-                result.add(list);
-                low++; //向后走
-            } else if (sum > cur) {
+                res.add(list);
+                low++;
+            } else if (curSum < sum) {
                 high++;
-            } else {
+            }else {
                 low++;
             }
+
+
         }
-        return result;
+        return res;
     }
 }

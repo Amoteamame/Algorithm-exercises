@@ -1,6 +1,7 @@
 package 剑指offer;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
@@ -30,6 +31,19 @@ public class 从尾到头打印链表 {
         list.add(listNode.val);
     }
 
+    public ArrayList<Integer> printListFromTailToHead2(ListNode listNode) {
+        Stack<Integer> stack=new Stack<Integer>();
+        while(listNode!=null){
+            stack.push(listNode.val);
+            listNode=listNode.next;
+        }
+
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        while(!stack.isEmpty()){
+            list.add(stack.pop());
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         ListNode listNode = new ListNode(1);

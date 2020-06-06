@@ -19,7 +19,7 @@ public class 顺时针打印矩阵 {
             if (row == 1) {
                 break;
             }
-            matrix = turn(matrix); // 逆时针旋转一次
+            matrix = turn(matrix);
             row = matrix.length;
         }
         return al;
@@ -28,11 +28,10 @@ public class 顺时针打印矩阵 {
     private int[][] turn(int[][] matrix) {
         int col = matrix[0].length;
         int row = matrix.length;
-        int[][] newMatrix = new int[col][row - 1];
-        for (int j = col - 1; j >=0; j--) {
+        int[][] newMatrix = new int[col][row-1]; // 行数减一
+        for (int j = col-1; j >=0; j--) {
             for (int i = 1; i < row; i++) {
-                // i从第一行起
-                newMatrix[col-1-j][i-1] = matrix[i][j];
+                newMatrix[col-j-1][i-1] = matrix[i][j];
             }
         }
         return newMatrix;

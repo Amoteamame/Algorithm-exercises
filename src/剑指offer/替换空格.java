@@ -21,24 +21,22 @@ public class 替换空格 {
 
     public static String replaceSpace2(StringBuffer str) {
         char[] cs = str.toString().toCharArray();
-        // 找到空格数量
-        int space_num = 0;
+        int space = 0; // 空格数量
         int len = cs.length;
-        for (int i = 0; i < cs.length; i++) {
+        for (int i = 0; i < len; i++) {
             if (cs[i] == ' ') {
-                space_num++;
+                space++;
             }
         }
-        int new_length = len + space_num*2;
-        char [] new_cs = new char[new_length];
-        // 倒叙添加元素
-        int index = new_length-1; //记录位置
-        for (int i = len-1; i >= 0; i--) {
+        int new_len = len + 2 * space;
+        char[] new_cs = new char[new_len];
+        int index = new_len-1;//记录新字符串的下标位置
+        for (int i = len-1; i >=0; i++) {
             if (cs[i] == ' ') {
                 new_cs[index--] = '0';
                 new_cs[index--] = '2';
                 new_cs[index--] = '%';
-            }else {
+            } else {
                 new_cs[index--] = cs[i];
             }
         }

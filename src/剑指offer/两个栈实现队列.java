@@ -25,5 +25,4 @@ public class 两个栈实现队列 {
         }
         return stack2.pop();
     }
-
 }
